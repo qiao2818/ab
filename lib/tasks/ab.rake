@@ -41,7 +41,7 @@ namespace :ab do
       #puts "++++++++"
       #
       #ActiveRecord::Base.connection.execute(sql)
-      sleep(600)
+      sleep(3600)
     end
   end
 
