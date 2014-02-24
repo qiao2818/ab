@@ -1,0 +1,41 @@
+<%= form_for(@ab_info) do |f| %>
+  <% if @ab_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ab_info.errors.count, "error") %> prohibited this ab_info from being saved:</h2>
+
+      <ul>
+      <% @ab_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :concurrency_num %><br>
+    <%= f.number_field :concurrency_num %>
+  </div>
+  <div class="field">
+    <%= f.label :request_num %><br>
+    <%= f.number_field :request_num %>
+  </div>
+  <div class="field">
+    <%= f.label :response_time %><br>
+    <%= f.number_field :response_time %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :src %><br>
+    <%= f.text_field :src %>
+  </div>
+  <div class="field">
+    <%= f.label :target %><br>
+    <%= f.text_field :target %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

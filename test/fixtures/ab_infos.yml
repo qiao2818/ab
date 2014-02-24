@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concurrency_num: 1
+  request_num: 1
+  response_time: 1
+  url: MyString
+  src: MyString
+  target: MyString
+
+two:
+  concurrency_num: 1
+  request_num: 1
+  response_time: 1
+  url: MyString
+  src: MyString
+  target: MyString

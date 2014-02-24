@@ -1,0 +1,37 @@
+<h1>Listing ab_infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency num</th>
+      <th>Request num</th>
+      <th>Response time</th>
+      <th>Url</th>
+      <th>Src</th>
+      <th>Target</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ab_infos.each do |ab_info| %>
+      <tr>
+        <td><%= ab_info.concurrency_num %></td>
+        <td><%= ab_info.request_num %></td>
+        <td><%= ab_info.response_time %></td>
+        <td><%= ab_info.url %></td>
+        <td><%= ab_info.src %></td>
+        <td><%= ab_info.target %></td>
+        <td><%= link_to 'Show', ab_info %></td>
+        <td><%= link_to 'Edit', edit_ab_info_path(ab_info) %></td>
+        <td><%= link_to 'Destroy', ab_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ab info', new_ab_info_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Concurrency num:</strong>
+  <%= @ab_info.concurrency_num %>
+</p>
+
+<p>
+  <strong>Request num:</strong>
+  <%= @ab_info.request_num %>
+</p>
+
+<p>
+  <strong>Response time:</strong>
+  <%= @ab_info.response_time %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @ab_info.url %>
+</p>
+
+<p>
+  <strong>Src:</strong>
+  <%= @ab_info.src %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @ab_info.target %>
+</p>
+
+<%= link_to 'Edit', edit_ab_info_path(@ab_info) %> |
+<%= link_to 'Back', ab_infos_path %>
