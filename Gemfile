@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# rvm use 1.9.3
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
