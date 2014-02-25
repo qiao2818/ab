@@ -20,14 +20,18 @@ namespace :ab do
           response_time = 0 # ab request fail
         end
         puts response_time
-        a = AbInfo.new()
-        a.concurrency_num = concurrency_num
-        a.request_num = request_num
-        a.url = url
-        a.response_time = response_time
-        a.src = src
-        a.target = target
-        a.save
+        begin
+          a = AbInfo.new()
+          a.concurrency_num = concurrency_num
+          a.request_num = request_num
+          a.url = url
+          a.response_time = response_time
+          a.src = src
+          a.target = target
+          a.save
+        rescue Exception => e
+          puts e
+        end
       end
       sleep(3600)
     end
