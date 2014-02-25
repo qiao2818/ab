@@ -2,7 +2,7 @@
 namespace :ab do
 
   REG_EX_NUM = /[[:digit:]]+/
-  
+
   task :runab, [:c, :n, :urls, :src, :target] => :environment do |t, args|
     while(true)
       inserts = []
@@ -19,6 +19,7 @@ namespace :ab do
         else
           response_time = 0 # ab request fail
         end
+        puts response_time
         a = AbInfo.new()
         a.concurrency_num = concurrency_num
         a.request_num = request_num
