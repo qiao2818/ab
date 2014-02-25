@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-
 namespace :ab do
 
   REG_EX_NUM = /[[:digit:]]+/
-
+  
   task :runab, [:c, :n, :urls, :src, :target] => :environment do |t, args|
-
     while(true)
       inserts = []
       concurrency_num = args[:c]
@@ -13,17 +11,14 @@ namespace :ab do
       src = args[:src]
       target = args[:target]
       urls = args[:urls].split(";")
-
-      puts urls
-
       urls.each do |url|
         ab_info = %x{ab -k -c #{concurrency_num} -n #{request_num} #{url}}
         info = ab_info.split("Time per request")
-        response_time = REG_EX_NUM.match(info[1])[0].to_i
-        puts response_time
-        #created_at = Time.now
-        #updated_at = created_at
-        #inserts.push "(#{concurrency_num},#{request_num},#{time_per_request},#{url},#{created_at}),#{updated_at}"
+        if(info.count > 1)
+          response_time = REG_EX_NUM.match(info[1])[0].to_i
+        else
+          response_time = 0 # ab request fail
+        end
         a = AbInfo.new()
         a.concurrency_num = concurrency_num
         a.request_num = request_num
@@ -33,14 +28,6 @@ namespace :ab do
         a.target = target
         a.save
       end
-      #
-      #sql = "INSERT INTO ab_info (`concurrency_num`, `request_num`, `time_per_request`, `url`, `created_at`, `updated_at`) VALUES #{inserts.join(", ")}"
-      #
-      #puts "++++++++"
-      #puts sql
-      #puts "++++++++"
-      #
-      #ActiveRecord::Base.connection.execute(sql)
       sleep(3600)
     end
   end
