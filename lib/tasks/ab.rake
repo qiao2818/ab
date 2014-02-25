@@ -17,7 +17,7 @@ namespace :ab do
       puts urls
 
       urls.each do |url|
-        ab_info = %x{ab -c #{concurrency_num} -n #{request_num} #{url} -k}
+        ab_info = %x{ab -k -c #{concurrency_num} -n #{request_num} #{url}}
         info = ab_info.split("Time per request")
         response_time = REG_EX_NUM.match(info[1])[0].to_i
         puts response_time
