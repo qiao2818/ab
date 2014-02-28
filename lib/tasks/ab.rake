@@ -4,8 +4,8 @@ namespace :ab do
   REG_EX_NUM = /[[:digit:]]+/
 
   task :runab, [:c, :n, :urls, :src, :target] => :environment do |t, args|
+    run_time = Time.now.utc
     while(true)
-      inserts = []
       concurrency_num = args[:c]
       request_num = args[:n]
       src = args[:src]
@@ -28,12 +28,18 @@ namespace :ab do
           a.response_time = response_time
           a.src = src
           a.target = target
+          a.run_time = run_time
           a.save
         rescue Exception => e
           puts e
         end
       end
-      sleep(3600)
+      end_time = Time.now.utc
+      end_min = end_time.min
+      end_sec = end_time.sec
+      next_sec = 3600 - end_min*60 - end_sec
+      run_time = end_time + next_sec.second
+      sleep(next_sec)
     end
   end
 
