@@ -12,7 +12,7 @@ namespace :ab do
       target = args[:target]
       urls = args[:urls].split(";")
       urls.each do |url|
-        ab_info = %x{ab -k -c #{concurrency_num} -n #{request_num} #{url}}
+        ab_info = %x{ab -c #{concurrency_num} -n #{request_num} #{url}}
         info = ab_info.split("Time per request")
         if(info.count > 1)
           response_time = REG_EX_NUM.match(info[1])[0].to_i
