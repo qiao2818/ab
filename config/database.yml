@@ -11,10 +11,12 @@
 development:
   adapter: mysql2
   encoding: utf8
+  host:
   database: ab_development
   pool: 5
   username: root
-  password: root
+  password: 
+  reconnect: true
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
