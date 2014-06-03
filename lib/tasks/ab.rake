@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+
 namespace :ab do
 
   REG_EX_NUM = /[[:digit:]]+/
 
-  task :run, [:src, :target] => :environment do |t, args|
+  task :run, [:src] => :environment do |t, args|
       src = args[:src]
-      target = args[:target]
 
       #src = "本地"
       #target = "测试"
@@ -23,7 +23,8 @@ namespace :ab do
         else
           start_date = ""
           end_date = ""
-          ab_info = %x{ab -c 1 -n 10 #{url.url}}
+          test_url = url.url
+          ab_info = %x{ab -c 1 -n 10 #{test_url}}
         end
         info = ab_info.split("Time per request")
         if(info.count > 1)
@@ -39,6 +40,13 @@ namespace :ab do
           a.request_num = 10
           a.response_time = response_time
           a.src = src
+          if(test_url.include?("54.248.85.234"))
+            target = "东京"
+          elsif(test_url.include?("115.29.171.153"))
+            target = "阿里"
+          else
+            target = ""
+          end
           a.target = target
           a.start_date = start_date
           a.end_date = end_date
@@ -58,7 +66,7 @@ namespace :ab do
         else
           start_date = ""
           end_date = ""
-          ab_info = %x{ab -c 1 -n 10 #{url.url}}
+          ab_info = %x{ab -c 5 -n 25 #{url.url}}
         end
         info = ab_info.split("Time per request")
         if(info.count > 1)
@@ -74,6 +82,13 @@ namespace :ab do
           a.request_num = 10
           a.response_time = response_time
           a.src = src
+          if(test_url.include?("54.248.85.234"))
+            target = "东京"
+          elsif(test_url.include?("115.29.171.153"))
+            target = "阿里"
+          else
+            target = ""
+          end
           a.target = target
           a.start_date = start_date
           a.end_date = end_date
