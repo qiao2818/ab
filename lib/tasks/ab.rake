@@ -14,15 +14,13 @@ namespace :ab do
       urls = Url.where("enable=1")
 
       urls.each do |url|
+        now = Time.now
+        end_date = now.to_s.split(" ")[0]
+        start_date = (now-30.day).to_s.split(" ")[0]
         if(url.need_date == 1)
-          now = Time.now
-          end_date = now.to_s.split(" ")[0]
-          start_date = (now-30.day).to_s.split(" ")[0]
           test_url = url.url + "&" + start_date + "&" + end_date
           ab_info = %x{ab -c 1 -n 10 #{test_url}}
         else
-          start_date = ""
-          end_date = ""
           test_url = url.url
           ab_info = %x{ab -c 1 -n 10 #{test_url}}
         end
@@ -57,15 +55,13 @@ namespace :ab do
       end
 
       urls.each do |url|
+        now = Time.now
+        end_date = now.to_s.split(" ")[0]
+        start_date = (now-30.day).to_s.split(" ")[0]
         if(url.need_date == 1)
-          now = Time.now
-          end_date = now.to_s.split(" ")[0]
-          start_date = (now-30.day).to_s.split(" ")[0]
           test_url = url.url + "&" + start_date + "&" + end_date
           ab_info = %x{ab -c 5 -n 25 #{test_url}}
         else
-          start_date = ""
-          end_date = ""
           test_url = url.url
           ab_info = %x{ab -c 5 -n 25 #{test_url}}
         end
