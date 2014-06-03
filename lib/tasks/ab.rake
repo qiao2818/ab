@@ -75,8 +75,8 @@ namespace :ab do
         begin
           a = Log.new
           a.url_id = url.id
-          a.concurrency_num = 1
-          a.request_num = 10
+          a.concurrency_num = 5
+          a.request_num = 25
           a.response_time = response_time
           a.src = src
           if(test_url.include?("54.248.85.234"))
