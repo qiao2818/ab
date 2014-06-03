@@ -1,5 +1,11 @@
 Ab::Application.routes.draw do
+  resources :logs
+
+  resources :urls
+
   resources :ab_infos
+
+  get 'ab_infos_haha' => 'ab_infos#haha'# request address is http://localhost:3000/ab_infos_haha => controller#action
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

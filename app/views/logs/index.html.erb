@@ -1,0 +1,39 @@
+<h1>Listing logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concurrency num</th>
+      <th>Request num</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Src</th>
+      <th>Target</th>
+      <th>Url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.concurrency_num %></td>
+        <td><%= log.request_num %></td>
+        <td><%= log.start_date %></td>
+        <td><%= log.end_date %></td>
+        <td><%= log.src %></td>
+        <td><%= log.target %></td>
+        <td><%= log.url_id %></td>
+        <td><%= link_to 'Show', log %></td>
+        <td><%= link_to 'Edit', edit_log_path(log) %></td>
+        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Log', new_log_path %>

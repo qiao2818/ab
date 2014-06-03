@@ -1,5 +1,80 @@
-<h1>Listing ab_infos</h1>
+<style>
+    #chart svg {height: 400px;}
+</style>
 
+<div id="chart">
+  <svg></svg>
+</div>
+
+<!-- <%= link_to("rails approach",{:controller =>'ab_infos',:action => 'index'})%> -->
+
+<script>
+    $.ajax({
+        type: "GET",
+        url: "/ab_infos_haha",
+        success: function(data){
+            console.log(data);
+
+            nv.addGraph(function() {
+                var b = test_data();
+                var a = [{values:[[1388505600000, 1448], [1388592000000, 2582], [1388678400000, 3000], [1388764800000, 5000]], key:"test wave", color:"#ff7f0e"}];
+                var c = [{values:[{x:'2014-01-01',y:1},{x:'2014-01-02',y:5},{x:'2014-01-03',y:10},{x:'2014-01-04',y:-5},{x:'2014-01-05',y:-10}],key:'test',color:'#2ca02c'}];
+                var chart = nv.models.lineChart()
+                        .margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
+                        .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
+                        .transitionDuration(350)  //how fast do you want the lines to transition?
+                        .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
+                        .showYAxis(true)        //Show the y-axis
+                        .showXAxis(true);       //Show the x-axis
+
+                chart.xAxis //Chart x-axis settings
+                        .rotateLabels(-45)
+                        .axisLabel('Date (Year-Month-Day)')
+//                     .tickFormat(d3.format(',f'));
+                        .tickFormat(function (d){
+                            return d3.time.format('%b %d')(new Date(d));
+                        });
+
+                chart.yAxis //Chart y-axis settings
+                        .axisLabel('Response Time (ms)')
+//                .tickFormat(d3.format('.02f'));
+
+                d3.select('svg') //Select the <svg> element you want to render the chart in.
+                        .datum(c) //Populate the <svg> element with chart data...
+                        .call(chart); //Finally, render the chart!
+
+                //Update the chart when window resizes.
+                nv.utils.windowResize(function() {chart.update(d)});
+                return chart;
+            });
+            function test_data() {
+                var sin = [],
+                        cos = [];
+
+                for (var i = 0; i < 10; i++) {
+                    sin.push({x: i, y: Math.sin(i/10)});
+                    cos.push({x: i, y: .5 * Math.cos(i/10)});
+                }
+
+                return [
+                    {
+                        values: sin,
+                        key: 'Sine Wave',
+                        color: '#ff7f0e'
+                    },
+                    {
+                        values: cos,
+                        key: 'Cosine Wave',
+                        color: '#2ca02c'
+                    }
+                ];
+            }
+
+        }
+    });
+</script>
+
+<h1>Listing ab_infos</h1>
 <table>
   <thead>
     <tr>
@@ -14,7 +89,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @ab_infos.each do |ab_info| %>
       <tr>
@@ -31,7 +105,9 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Ab info', new_ab_info_path %>
+
+
+
+

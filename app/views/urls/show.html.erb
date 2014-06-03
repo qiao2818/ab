@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @url.url %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @url.enable %>
+</p>
+
+<p>
+  <strong>Need date:</strong>
+  <%= @url.need_date %>
+</p>
+
+<%= link_to 'Edit', edit_url_path(@url) %> |
+<%= link_to 'Back', urls_path %>

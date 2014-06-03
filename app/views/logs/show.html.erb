@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Concurrency num:</strong>
+  <%= @log.concurrency_num %>
+</p>
+
+<p>
+  <strong>Request num:</strong>
+  <%= @log.request_num %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @log.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @log.end_date %>
+</p>
+
+<p>
+  <strong>Src:</strong>
+  <%= @log.src %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @log.target %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @log.url_id %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

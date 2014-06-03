@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  enable: 1
+  need_date: 1
+
+two:
+  url: MyString
+  enable: 1
+  need_date: 1

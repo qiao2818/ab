@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concurrency_num: 1
+  request_num: 1
+  start_date: MyString
+  end_date: MyString
+  src: MyString
+  target: MyString
+  url_id: 1
+
+two:
+  concurrency_num: 1
+  request_num: 1
+  start_date: MyString
+  end_date: MyString
+  src: MyString
+  target: MyString
+  url_id: 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224144400) do
+ActiveRecord::Schema.define(version: 20140603054034) do
 
   create_table "ab_infos", force: true do |t|
     t.integer  "concurrency_num"
@@ -20,6 +20,28 @@ ActiveRecord::Schema.define(version: 20140224144400) do
     t.string   "url"
     t.string   "src"
     t.string   "target"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "run_time"
+  end
+
+  create_table "logs", force: true do |t|
+    t.integer  "concurrency_num"
+    t.integer  "request_num"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "src"
+    t.string   "target"
+    t.integer  "url_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "response_time"
+  end
+
+  create_table "urls", force: true do |t|
+    t.text     "url"
+    t.integer  "enable"
+    t.integer  "need_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
