@@ -66,7 +66,8 @@ namespace :ab do
         else
           start_date = ""
           end_date = ""
-          ab_info = %x{ab -c 5 -n 25 #{url.url}}
+          test_url = url.url
+          ab_info = %x{ab -c 5 -n 25 #{test_url}}
         end
         info = ab_info.split("Time per request")
         if(info.count > 1)
